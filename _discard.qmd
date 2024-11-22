@@ -1,0 +1,43 @@
+
+# Appendix
+
+## DSAN 5500: Stack vs. Heap {.smaller}
+
+Let's look at what happens, in the computer's memory, when we run the following code:
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| code-fold: show
+#| label: py-memory-example
+import datetime
+import pandas as pd
+country_df = pd.read_csv("assets/country_pop.csv")
+pop_col = country_df['pop']
+num_rows = len(country_df)
+filled = all(~pd.isna(country_df))
+alg_row = country_df.loc[country_df['name'] == "Algeria"]
+num_cols = len(country_df.columns)
+username = "Jeff"
+cur_date = datetime.datetime.now()
+i = 0
+j = None
+z = 314
+country_df
+```
+
+:::
+::: {.column width="50%"}
+
+![](images/stack_heap.svg)
+
+:::
+:::
+
+
+
+
+## DSAN 5450: Human Tags
+
+![](images/imagenet.jpg){fig-align="center"}

@@ -4,7 +4,7 @@
     "href": "index.html#motivation-efficient-data-storage-and-manipulation",
     "title": "A Whirlwind Tour of ‘Applied’ Electives",
     "section": "Motivation: Efficient Data Storage and Manipulation",
-    "text": "Motivation: Efficient Data Storage and Manipulation\n\nTransferable skills regardless of current popular language\nC “overtaken” by Java, Java “overtaken” by Python, Python will someday be overtaken"
+    "text": "Motivation: Efficient Data Storage and Manipulation\n\nTransferable skills regardless of current popular language\nC “overtaken” by Java, Java “overtaken” by Python, Python will someday be overtaken\n\n\n\n         name  year  quarter  count    time      prop\n0        Ruby  2011        3    965  2011_3  0.246236\n1  JavaScript  2011        3    694  2011_3  0.177086\n2      Python  2011        3    619  2011_3  0.157948\n3         PHP  2011        3    560  2011_3  0.142894\n4        Java  2011        3    420  2011_3  0.107170"
   },
   {
     "objectID": "index.html#w4-linear-vs.-logarithmic-structures",
@@ -42,38 +42,38 @@
     "text": "Fairness \\(\\neq\\) Excluding Race/Gender\n\nIn fact (because of correlations) can prevent reduction of racial disparities\nBloomberg analysis of neighborhoods with same-day delivery from Amazon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Figures from Ingold and Soper (2016), “Amazon Doesn’t Consider the Race of its Customers. Should It?”"
   },
   {
-    "objectID": "index.html#spatial-statistics",
-    "href": "index.html#spatial-statistics",
+    "objectID": "index.html#data-protection-regimes",
+    "href": "index.html#data-protection-regimes",
     "title": "A Whirlwind Tour of ‘Applied’ Electives",
-    "section": "Spatial Statistics",
-    "text": "Spatial Statistics"
+    "section": "Data Protection Regimes",
+    "text": "Data Protection Regimes\n\n\nFigure 3: From PIWIK, Privacy Policies Around the Globe (2023)"
   },
   {
-    "objectID": "index.html#correlation-causation",
-    "href": "index.html#correlation-causation",
+    "objectID": "index.html#does-reading-understanding",
+    "href": "index.html#does-reading-understanding",
     "title": "A Whirlwind Tour of ‘Applied’ Electives",
-    "section": "Correlation… Causation…?",
-    "text": "Correlation… Causation…?"
+    "section": "Does Reading = Understanding?",
+    "text": "Does Reading = Understanding?\n\nDoes reading \\(\\implies\\) understanding implications / contingencies / ambiguities?\nNLP can help: “making privacy policies machine readable […] would help users match privacy preferences against policies offered by web services” (Wagner 2023)\n\n\n\nFigure 4: From Wagner (2023). “Obfuscatory words” are words like acceptable, significant, mainly, or predominantly, interpretated at the discretion of companies rather than users"
+  },
+  {
+    "objectID": "index.html#diffusion-processes",
+    "href": "index.html#diffusion-processes",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Diffusion Processes",
+    "text": "Diffusion Processes"
+  },
+  {
+    "objectID": "index.html#spatial-regression",
+    "href": "index.html#spatial-regression",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Spatial Regression",
+    "text": "Spatial Regression"
   },
   {
     "objectID": "index.html#we-hope-you-join-us",
     "href": "index.html#we-hope-you-join-us",
     "title": "A Whirlwind Tour of ‘Applied’ Electives",
-    "section": "We Hope You Join Us!",
-    "text": "We Hope You Join Us!\n:)\nReferences\n\n\nD’Ignazio, Catherine, and Lauren F. Klein. 2020. Data Feminism. MIT Press.\n\n\nIngold, David, and Spencer Soper. 2016. “Amazon Doesn’t Consider the Race of Its Customers. Should It?” Bloomberg, April. http://www.bloomberg.com/graphics/2016-amazon-same-day/.\n\n\nSchiebinger, Londa, Ineke Klinga, Hee Young Paik, Inés Sánchez de Madariaga, Martina Schraudner, and Marcia Stefanick. 2020. “Machine Translation: Gendered Innovations.” http://genderedinnovations.stanford.edu/case-studies/nlp.html#tabs-2.\n\n\nWan, Yixin, George Pu, Jiao Sun, Aparna Garimella, Kai-Wei Chang, and Nanyun Peng. 2023. “‘Kelly Is a Warm Person, Joseph Is a Role Model’: Gender Biases in LLM-Generated Reference Letters.” In Findings of the Association for Computational Linguistics: EMNLP 2023, edited by Houda Bouamor, Juan Pino, and Kalika Bali, 3730–48. Singapore: Association for Computational Linguistics. https://doi.org/10.18653/v1/2023.findings-emnlp.243."
-  },
-  {
-    "objectID": "index.html#dsan-5500-stack-vs.-heap",
-    "href": "index.html#dsan-5500-stack-vs.-heap",
-    "title": "A Whirlwind Tour of ‘Applied’ Electives",
-    "section": "DSAN 5500: Stack vs. Heap",
-    "text": "DSAN 5500: Stack vs. Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
-  },
-  {
-    "objectID": "index.html#dsan-5450-human-tags",
-    "href": "index.html#dsan-5450-human-tags",
-    "title": "A Whirlwind Tour of ‘Applied’ Electives",
-    "section": "DSAN 5450: Human Tags",
-    "text": "DSAN 5450: Human Tags\n\n\n\n\n\n\n\n\n\nDSAN Open House 2024"
+    "section": "We Hope You Join Us! 😊",
+    "text": "We Hope You Join Us! 😊\nReferences\n\n\nD’Ignazio, Catherine, and Lauren F. Klein. 2020. Data Feminism. MIT Press.\n\n\nIngold, David, and Spencer Soper. 2016. “Amazon Doesn’t Consider the Race of Its Customers. Should It?” Bloomberg, April. http://www.bloomberg.com/graphics/2016-amazon-same-day/.\n\n\nSchiebinger, Londa, Ineke Klinga, Hee Young Paik, Inés Sánchez de Madariaga, Martina Schraudner, and Marcia Stefanick. 2020. “Machine Translation: Gendered Innovations.” http://genderedinnovations.stanford.edu/case-studies/nlp.html#tabs-2.\n\n\nWagner, Isabel. 2023. “Privacy Policies Across the Ages: Content of Privacy Policies 1996–2021.” ACM Transactions on Privacy and Security 26 (3): 32:1–32. https://doi.org/10.1145/3590152.\n\n\nWan, Yixin, George Pu, Jiao Sun, Aparna Garimella, Kai-Wei Chang, and Nanyun Peng. 2023. “‘Kelly Is a Warm Person, Joseph Is a Role Model’: Gender Biases in LLM-Generated Reference Letters.” In EMNLP 2023, 3730–48. Singapore: ACL. https://doi.org/10.18653/v1/2023.findings-emnlp.243.\n\n\n\n\n\n\nDSAN Open House 2024"
   }
 ]

@@ -17,6 +17,7 @@ format:
     html-math-method: mathjax
     slide-number: true
     scrollable: true
+    cache: false
     link-external-icon: true
     link-external-newwindow: true
     css: "styles.css"
@@ -274,65 +275,58 @@ digraph G {
 Figures from @ingold_amazon_2016, "Amazon Doesn't Consider the Race of its Customers. Should It?"
 :::
 
+## Data Protection Regimes
+
+![From PIWIK, [*Privacy Policies Around the Globe*](https://piwik.pro/privacy-laws-around-globe/) (2023)](images/piwik.jpeg){#fig-policies fig-align="center"}
+
+## Does Reading = Understanding? {.smaller .crunch-title .crunch-ul}
+
+* Does reading $\implies$ understanding **implications** / **contingencies** / **ambiguities**?
+* NLP can help: *"making privacy policies **machine readable** [...] would help users match **privacy preferences** against **policies** offered by web services"* [@wagner_privacy_2023]
+
+![From @wagner_privacy_2023. "Obfuscatory words" are words like *acceptable*, *significant*, *mainly*, or *predominantly*, interpretated at the discretion of companies rather than users](images/wagner_fig.svg){#fig-wagner fig-align="center"}
+
 # DSAN 6750: GIS for Spatial Data Science {data-stack-name="GIS"}
 
 * Offered in **Fall**
+* **Classical** (i.i.d.) Statistics $\rightarrow$ **Spatial** Statistics (need to account for **autocorrelation**)
 
-## Spatial Statistics
 
-# DSAN 6850: Causal Inference for Computational Social Science {data-stack-name="Causal Inference"}
+## Diffusion Processes
 
-## Correlation... Causation...?
+```{r}
+#| label: plot-neighbors
+# Libraries
+library(sf) |> suppressPackageStartupMessages()
+library(spdep) |> suppressPackageStartupMessages()
+library(rnaturalearth) |> suppressPackageStartupMessages()
+library(mapview) |> suppressPackageStartupMessages()
+library(htmlwidgets)
+# Download data
+asia_sf <- ne_countries(continent = "Asia", scale=50)
+# Compute neighborhood matrix
+asia_nb <- asia_sf |> spdep::poly2nb(queen = TRUE, row.names=asia_sf$geounit)
+# Compute Centroids
+nb_cents <- sf::st_as_sf(sf::st_point_on_surface(asia_sf))
+# Construct lines between each neighboring POLYGON
+nb_lines <- spdep::nb2lines(
+    asia_nb, coords=st_coordinates(nb_cents), as_sf=TRUE
+)
+nb_lines$edgelabel <- paste0(nb_lines$i_ID, "-", nb_lines$j_ID)
+# And plot
+mapview(nb_cents, label="geounit") + mapview(nb_lines, label="edgelabel")
+```
 
-## We Hope You Join Us! {data-sm="false"}
+## Spatial Regression
 
-:)
+```{r}
+it_plot <- readRDS("assets/it_plot.rds")
+it_plot
+```
+
+## We Hope You Join Us! 😊 {data-sm="false"}
 
 **References**
 
 ::: {#refs}
 :::
-
-# Appendix
-
-## DSAN 5500: Stack vs. Heap {.smaller}
-
-Let's look at what happens, in the computer's memory, when we run the following code:
-
-::: columns
-::: {.column width="50%"}
-
-```{python}
-#| code-fold: show
-#| label: py-memory-example
-import datetime
-import pandas as pd
-country_df = pd.read_csv("assets/country_pop.csv")
-pop_col = country_df['pop']
-num_rows = len(country_df)
-filled = all(~pd.isna(country_df))
-alg_row = country_df.loc[country_df['name'] == "Algeria"]
-num_cols = len(country_df.columns)
-username = "Jeff"
-cur_date = datetime.datetime.now()
-i = 0
-j = None
-z = 314
-country_df
-```
-
-:::
-::: {.column width="50%"}
-
-<!-- https://kroki.io/graphviz/svg/eNqtU01v2zAMPae_wlAvG5AGkuw0bhELKLovDNsO27BLGgSKJH-0rmTIdtMu8n8fraRZ1xrbZTpYFsn3RD2Sssgsr_IgC7ZHASzL9Y0sbPLpqz8Ko4XSjeWNSr7bVh2N6na9Q4iyrRtl32NAjkYlX6syQZ_VrbEPwauLFFzBpZEqeHuvRNsURr9GEPcCTjz8QPCt4eIG-bufrrq547Ze-KAgCdB2O9f8VmEmTAvpPaxk6ryFsMpUK2FKp9vblTWb2qVFWSrpeJn1Z28Hf-3aWtke4kRrVxJe6Ap37X52bjvnUlrM8D0OeYx5Kpy3ELAQvOaxm6eEkRA2ynpV4CcCXzpLRRTGGI5TRuF7ejCq3jhjsRKhPIvjMzjFrLedsS9G9wQEs5BEXYfGdc4r1T_SKmGsROPU6KZPNEGXprWFsmgJknVDatI_1fygeDUg5gsU3lf_-Tre87zhDX9nIYXArK-VaNBg9D542KmhF2pVJXiCMR2MyPFizzCXmL24clwpvSlkkyd4J1HyKNBymI480kGzZJg5kDujjMA3ZLSvckaYr_9Fuea64LBnysI-zyJ2oTNTch817VvK0UnsomhCXRhNpocy_SWHzltGPpUweMzlCn1UaXqFhqr65IVQ4MM7ogMYNFELiml4gmcnlC7_TTLqDnmh3Qyhc9_cwQkLUI7RucQLGPIaRrzQjZ_x5TCE7CAEnWfTRd08lHCp5HWuoEOfMwTH4_t9zj8KtUEDlGn0m4_-D77Tni8PBzwz74mOQIzuF2xJdsA= -->
-
-![](images/stack_heap.svg)
-
-:::
-:::
-
-
-
-## DSAN 5450: Human Tags
-
-![](images/imagenet.jpg){fig-align="center"}
