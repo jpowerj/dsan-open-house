@@ -1,0 +1,338 @@
+---
+title: "A Whirlwind Tour of 'Applied' Electives"
+subtitle: "Data Science and Analytics (DSAN) at Georgetown University"
+author: "Jeff Jacobs"
+institute: "Georgetown University<br /><a href='mailto:jj1088@georgetown.edu'>`jj1088@georgetown.edu`</a>"
+date: 2024-11-22
+date-format: "dddd, D MMMM YYYY"
+format:
+  revealjs:
+    output-file: "index.html"
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
+    favicon: "favicon.png"
+    html-math-method: mathjax
+    slide-number: true
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    css: "styles.css"
+    footer: "DSAN Open House 2024"
+    logo: "images/dsan_twolines.png"
+    bibliography: "DSAN_Open_House.bib"
+    nocite: |
+      @*
+    revealjs-plugins:
+      - simplemenu
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><ul class='menu'></ul></div>"
+      scale: 0.5
+---
+
+# Electives I Teach
+
+* DSAN 5500: Data Structures, Algorithms, and Objects in Python
+* DSAN 5450: Data Ethics and Policy
+* DSAN 6750: GIS for Spatial Data Science
+* DSAN 6850: Causal Inference for Computational Social Science
+
+# DSAN 5500: Data Structures, Algorithms, and Objects in Python {data-stack-name="Data Structures"}
+
+* Offered in **Spring**
+
+## Motivation: Efficient Data Storage and Manipulation {.title-10 .smaller .crunch-title .crunch-ul}
+
+* Transferable skills *regardless of* current popular language
+* C "overtaken" by Java, Java "overtaken" by Python, Python will someday be overtaken
+
+```{python}
+#| label: plot-langs
+#| code-fold: true
+#| fig-align: center
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.io as pio
+pio.renderers.default = "notebook"
+lang_df = pd.read_csv("assets/gh_issues.csv")
+# The data for 2022 is essentially useless
+lang_df = lang_df[lang_df['year'] <= 2021].copy()
+lang_df['time'] = lang_df['year'].astype(str) + "_" + lang_df['quarter'].astype(str)
+lang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')
+lang_df.head()
+#sns.lineplot(data=lang_df, x='year', y='count', color='name')
+# Keep only most popular languages
+keep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']
+pop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()
+fig = px.line(pop_df,
+  x='time', y='prop', color='name',
+  template='simple_white', title='Programming Language Popularity Since 2012 (GitHub)',
+  labels = {
+    'time': 'Year',
+    'prop': 'Proportion of GitHub Issues'
+  }
+)
+fig.update_layout(
+  xaxis = dict(
+    tickmode = 'array',
+    tickvals = [f"{year}_1" for year in range(2012,2022)],
+    ticktext = [f"{year}" for year in range(2012,2022)]
+  )
+)
+fig.show()
+```
+
+## W4: Linear vs. Logarithmic Structures {.smaller .crunch-title .crunch-img .crunch-quarto-figure .crunch-table}
+
+```{=html}
+<table style="table-layout: fixed; width: 100% !important;">
+<thead>
+<tr>
+  <th style="width: 25% !important;"></th>
+  <th style="width: 30% !important;"><span data-qmd="Linear Things: $O(N)$"></span></th>
+  <th style="width: 45% !important;"><span data-qmd="Logarithmic Things: $O(\lg{N})$"></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="width: 25% !important;"><span data-qmd="**Data Structures**"></span></td>
+  <td><div data-qmd="`LinkedList`
+  
+![](images/linked_list.svg){width=270}"></div></td>
+  <td><div data-qmd="`BinarySearchTree`
+
+![](images/bst.svg){fig-align=center width=200}"></div></td>
+</tr>
+<tr>
+  <td style="vertical-align: middle !important;"><span data-qmd="**Sorting Algorithms**"></span></td>
+  <td><span data-qmd="[Insertion-Sort]{.alg}"></span></td>
+  <td><span data-qmd="[Merge-Sort]{.alg}"></span></td>
+</tr>
+<tr>
+  <td style="vertical-align: middle !important;"><span data-qmd="**Search Algorithms**"></span></td>
+  <td><span data-qmd="[Linear-Search]{.alg}"></span></td>
+  <td><span data-qmd="[Binary-Search]{.alg}"></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="**General Pattern**"></span></td>
+  <td>One-by-One</td>
+  <td>Divide-and-Conquer</td>
+</tr>
+<tr>
+  <td><span data-qmd="**Steps to Look Up a Word**"></span></td>
+  <td><span data-qmd="$N = 102118$"></span></td>
+  <td><span data-qmd="$\lceil \log_2(N) \rceil = 17$"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+* **Hash Table**: A "trick" that gets us close to $O(1)$, **by pre-allocating lots of memory!**
+
+$$
+O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Efficient Algorithm} \\ \text{(Free!)}}}} \; \underbrace{\leadsto O(1 + \epsilon\log_2(N))}_{\substack{\text{More Memory} \\ \text{(\$\$\$)}}}
+$$
+
+## W11: Functional Programming for *Debuggable* ETL Pipelines {.crunch-title .title-06 .crunch-ul .crunch-p .code-90}
+
+<!-- * Imperative ("standard") programming: Code runs line-by-line, from top to bottom -->
+* Run code, check output... it's wrong 😵 what do you do?
+* Usual approach: Read lines one-by-one, figuring out what they do, seeing if something **pops out** that seems wrong; adding comments like `# Convert to lowercase`{.python}
+
+```{dot}
+//| echo: false
+//| fig-height: 1
+digraph G {
+  rankdir="TB";
+	edge [
+    penwidth=1.2
+    arrowsize=0.85
+  ];
+  node [
+    fontname="Courier"
+    shape="plaintext"
+  ];
+  input[shape="plaintext", label="in.txt"];
+  load_text[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">load_text</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  lowercase[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">lowercase</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  remove_punct[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">remove_punct</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  remove_stopwords[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">remove_stopwords</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  output[shape="plaintext", label="out.txt"];
+
+  {
+    rank=same;
+    input -> load_text;
+    load_text -> lowercase[label="🧐 ✅"];
+    lowercase -> remove_punct[label="🧐 ✅"];
+    remove_punct -> remove_stopwords[label="🧐 ❌❗️"];
+    remove_stopwords -> output;
+  }
+}
+```
+
+* **With** side effects: ❌ $\Rightarrow$ issue *somewhere* in the chain 😩🏃‍♂️
+* **No** side effects: ❌ $\Rightarrow$ issue **must be in `remove_punct()`!** 😎 <i class='bi bi-arrow-down'></i>⏱️ = <i class='bi bi-arrow-up'></i>💰
+
+# DSAN 5450: Data Ethics and Policy {data-stack-name="Data Ethics"}
+
+* Offered in **Spring**
+
+## Data Science for Who(m)?
+
+* What are the processes by which data is **measured**, **recorded**, and **distributed**?
+
+![The <a href='https://github.com/MimiOnuoha/missing-datasets' target='_blank'>Library of Missing Datasets</a>. From @dignazio_data_2020](images/missing-datasets.jpg){fig-align="center"}
+
+## Encoding Existing Biases {.smaller .crunch-title .crunch-img}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![From @schiebinger_machine_2020](images/pronouns.jpg){fig-align="center" width="75%"}
+
+:::
+::: {.column width="50%"}
+
+![From [Google Translate](https://translate.google.com/?sl=en&tl=de&text=A%20nurse%0AA%20defendant&op=translate) (22 Nov 2024)](images/translation.jpg){fig-align="center"}
+
+:::
+::::
+
+::: {#fig-chatgpt-gender .text-90}
+
+| Prompt | Result |
+| - | - |
+| "Generate a reference letter for **Kelly**, a 22 year old **female** student at UCLA" | "She is an engaged **participant** in group projects, demonstrating exceptional teamwork and collaboration skills [...] a **well-liked member** of our community." |
+| "Generate a reference letter for **Joseph**, a 22 year old **male** student at UCLA" | His enthusiasm and dedication have had a positive impact on those around him, making him a natural **leader** and **role model** for his peers." |
+
+: {tbl-colwidths="[35,65]"}
+
+@wan_kelly_2023, "Gender Biases in LLM-Generated Reference Letters"
+:::
+
+## Fairness $\neq$ Excluding Race/Gender {.smaller .crunch-title}
+
+* In fact (because of **correlations**) can *prevent* reduction of racial disparities
+* *Bloomberg* analysis of **neighborhoods with same-day delivery** from Amazon... 
+
+::: {#fig-amazon}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![](images/dc-big-inset.png){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+![](images/dc-big-chart.png){fig-align="center"}
+
+:::
+::::
+
+Figures from @ingold_amazon_2016, "Amazon Doesn't Consider the Race of its Customers. Should It?"
+:::
+
+# DSAN 6750: GIS for Spatial Data Science {data-stack-name="GIS"}
+
+* Offered in **Fall**
+
+## Spatial Statistics
+
+# DSAN 6850: Causal Inference for Computational Social Science {data-stack-name="Causal Inference"}
+
+## Correlation... Causation...?
+
+## We Hope You Join Us! {data-sm="false"}
+
+:)
+
+**References**
+
+::: {#refs}
+:::
+
+# Appendix
+
+## DSAN 5500: Stack vs. Heap {.smaller}
+
+Let's look at what happens, in the computer's memory, when we run the following code:
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| code-fold: show
+#| label: py-memory-example
+import datetime
+import pandas as pd
+country_df = pd.read_csv("assets/country_pop.csv")
+pop_col = country_df['pop']
+num_rows = len(country_df)
+filled = all(~pd.isna(country_df))
+alg_row = country_df.loc[country_df['name'] == "Algeria"]
+num_cols = len(country_df.columns)
+username = "Jeff"
+cur_date = datetime.datetime.now()
+i = 0
+j = None
+z = 314
+country_df
+```
+
+:::
+::: {.column width="50%"}
+
+<!-- https://kroki.io/graphviz/svg/eNqtU01v2zAMPae_wlAvG5AGkuw0bhELKLovDNsO27BLGgSKJH-0rmTIdtMu8n8fraRZ1xrbZTpYFsn3RD2Sssgsr_IgC7ZHASzL9Y0sbPLpqz8Ko4XSjeWNSr7bVh2N6na9Q4iyrRtl32NAjkYlX6syQZ_VrbEPwauLFFzBpZEqeHuvRNsURr9GEPcCTjz8QPCt4eIG-bufrrq547Ze-KAgCdB2O9f8VmEmTAvpPaxk6ryFsMpUK2FKp9vblTWb2qVFWSrpeJn1Z28Hf-3aWtke4kRrVxJe6Ap37X52bjvnUlrM8D0OeYx5Kpy3ELAQvOaxm6eEkRA2ynpV4CcCXzpLRRTGGI5TRuF7ejCq3jhjsRKhPIvjMzjFrLedsS9G9wQEs5BEXYfGdc4r1T_SKmGsROPU6KZPNEGXprWFsmgJknVDatI_1fygeDUg5gsU3lf_-Tre87zhDX9nIYXArK-VaNBg9D542KmhF2pVJXiCMR2MyPFizzCXmL24clwpvSlkkyd4J1HyKNBymI480kGzZJg5kDujjMA3ZLSvckaYr_9Fuea64LBnysI-zyJ2oTNTch817VvK0UnsomhCXRhNpocy_SWHzltGPpUweMzlCn1UaXqFhqr65IVQ4MM7ogMYNFELiml4gmcnlC7_TTLqDnmh3Qyhc9_cwQkLUI7RucQLGPIaRrzQjZ_x5TCE7CAEnWfTRd08lHCp5HWuoEOfMwTH4_t9zj8KtUEDlGn0m4_-D77Tni8PBzwz74mOQIzuF2xJdsA= -->
+
+![](images/stack_heap.svg)
+
+:::
+:::
+
+
+
+## DSAN 5450: Human Tags
+
+![](images/imagenet.jpg){fig-align="center"}

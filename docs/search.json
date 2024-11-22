@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "index.html#motivation-efficient-data-storage-and-manipulation",
+    "href": "index.html#motivation-efficient-data-storage-and-manipulation",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Motivation: Efficient Data Storage and Manipulation",
+    "text": "Motivation: Efficient Data Storage and Manipulation\n\nTransferable skills regardless of current popular language\nC “overtaken” by Java, Java “overtaken” by Python, Python will someday be overtaken"
+  },
+  {
+    "objectID": "index.html#w4-linear-vs.-logarithmic-structures",
+    "href": "index.html#w4-linear-vs.-logarithmic-structures",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "W4: Linear vs. Logarithmic Structures",
+    "text": "W4: Linear vs. Logarithmic Structures\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Look Up a Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]"
+  },
+  {
+    "objectID": "index.html#w11-functional-programming-for-debuggable-etl-pipelines",
+    "href": "index.html#w11-functional-programming-for-debuggable-etl-pipelines",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "W11: Functional Programming for Debuggable ETL Pipelines",
+    "text": "W11: Functional Programming for Debuggable ETL Pipelines\n\n\nRun code, check output… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n\n\n\n\n\nWith side effects: ❌ \\(\\Rightarrow\\) issue somewhere in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\Rightarrow\\) issue must be in remove_punct()! 😎 ⏱️ = 💰"
+  },
+  {
+    "objectID": "index.html#data-science-for-whom",
+    "href": "index.html#data-science-for-whom",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Data Science for Who(m)?",
+    "text": "Data Science for Who(m)?\n\nWhat are the processes by which data is measured, recorded, and distributed?\n\n\nThe Library of Missing Datasets. From D’Ignazio and Klein (2020)"
+  },
+  {
+    "objectID": "index.html#encoding-existing-biases",
+    "href": "index.html#encoding-existing-biases",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Encoding Existing Biases",
+    "text": "Encoding Existing Biases\n\n\n\n\n\nFrom Schiebinger et al. (2020)\n\n\n\n\n\n\nFrom Google Translate (22 Nov 2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\nPrompt\nResult\n\n\n\n\n“Generate a reference letter for Kelly, a 22 year old female student at UCLA”\n“She is an engaged participant in group projects, demonstrating exceptional teamwork and collaboration skills […] a well-liked member of our community.”\n\n\n“Generate a reference letter for Joseph, a 22 year old male student at UCLA”\nHis enthusiasm and dedication have had a positive impact on those around him, making him a natural leader and role model for his peers.”\n\n\n\n\n\nFigure 1: Wan et al. (2023), “Gender Biases in LLM-Generated Reference Letters”"
+  },
+  {
+    "objectID": "index.html#fairness-neq-excluding-racegender",
+    "href": "index.html#fairness-neq-excluding-racegender",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Fairness \\(\\neq\\) Excluding Race/Gender",
+    "text": "Fairness \\(\\neq\\) Excluding Race/Gender\n\nIn fact (because of correlations) can prevent reduction of racial disparities\nBloomberg analysis of neighborhoods with same-day delivery from Amazon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Figures from Ingold and Soper (2016), “Amazon Doesn’t Consider the Race of its Customers. Should It?”"
+  },
+  {
+    "objectID": "index.html#spatial-statistics",
+    "href": "index.html#spatial-statistics",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Spatial Statistics",
+    "text": "Spatial Statistics"
+  },
+  {
+    "objectID": "index.html#correlation-causation",
+    "href": "index.html#correlation-causation",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "Correlation… Causation…?",
+    "text": "Correlation… Causation…?"
+  },
+  {
+    "objectID": "index.html#we-hope-you-join-us",
+    "href": "index.html#we-hope-you-join-us",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "We Hope You Join Us!",
+    "text": "We Hope You Join Us!\n:)\nReferences\n\n\nD’Ignazio, Catherine, and Lauren F. Klein. 2020. Data Feminism. MIT Press.\n\n\nIngold, David, and Spencer Soper. 2016. “Amazon Doesn’t Consider the Race of Its Customers. Should It?” Bloomberg, April. http://www.bloomberg.com/graphics/2016-amazon-same-day/.\n\n\nSchiebinger, Londa, Ineke Klinga, Hee Young Paik, Inés Sánchez de Madariaga, Martina Schraudner, and Marcia Stefanick. 2020. “Machine Translation: Gendered Innovations.” http://genderedinnovations.stanford.edu/case-studies/nlp.html#tabs-2.\n\n\nWan, Yixin, George Pu, Jiao Sun, Aparna Garimella, Kai-Wei Chang, and Nanyun Peng. 2023. “‘Kelly Is a Warm Person, Joseph Is a Role Model’: Gender Biases in LLM-Generated Reference Letters.” In Findings of the Association for Computational Linguistics: EMNLP 2023, edited by Houda Bouamor, Juan Pino, and Kalika Bali, 3730–48. Singapore: Association for Computational Linguistics. https://doi.org/10.18653/v1/2023.findings-emnlp.243."
+  },
+  {
+    "objectID": "index.html#dsan-5500-stack-vs.-heap",
+    "href": "index.html#dsan-5500-stack-vs.-heap",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "DSAN 5500: Stack vs. Heap",
+    "text": "DSAN 5500: Stack vs. Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+  },
+  {
+    "objectID": "index.html#dsan-5450-human-tags",
+    "href": "index.html#dsan-5450-human-tags",
+    "title": "A Whirlwind Tour of ‘Applied’ Electives",
+    "section": "DSAN 5450: Human Tags",
+    "text": "DSAN 5450: Human Tags\n\n\n\n\n\n\n\n\n\nDSAN Open House 2024"
+  }
+]

@@ -1,0 +1,75 @@
+.caption {
+    text-align: center !important;
+}
+figcaption {
+    text-align: center !important;
+}
+
+.code-90 code {
+    margin-left: 8px !important;
+    font-size: 80% !important;
+}
+
+.crunch-img img {
+    margin: 0px !important;
+}
+
+.crunch-quarto-figure .quarto-figure {
+    margin-bottom: 0px !important;
+}
+
+.crunch-table td {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+.crunch-table th {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+.crunch-title h1 {
+    margin-bottom: 0px !important;
+}
+.crunch-title h2 {
+    margin-bottom: 0px !important;
+}
+
+.crunch-ul ul {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+.text-90 {
+    font-size: 90% !important;
+}
+
+.title-06 h2 {
+    font-size: calc(0.6*var(--r-heading2-size)) !important;
+}
+.title-06 h1 {
+    font-size: calc(0.6*var(--r-heading2-size)) !important;
+}
+.title-07 h2 {
+    font-size: calc(0.7*var(--r-heading2-size)) !important;
+}
+.title-07 h1 {
+    font-size: calc(0.7*var(--r-heading2-size)) !important;
+}
+.title-08 h2 {
+    font-size: calc(0.8*var(--r-heading2-size)) !important;
+}
+.title-08 h1 {
+    font-size: calc(0.8*var(--r-heading2-size)) !important;
+}
+.title-09 h2 {
+    font-size: calc(0.9*var(--r-heading2-size)) !important;
+}
+.title-09 h1 {
+    font-size: calc(0.9*var(--r-heading2-size)) !important;
+}
+.title-10 h2 {
+    font-size: calc(1.0*var(--r-heading2-size)) !important;
+}
+.title-10 h1 {
+    font-size: calc(1.0*var(--r-heading2-size)) !important;
+}
