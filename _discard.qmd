@@ -36,8 +36,55 @@ country_df
 :::
 
 
-
+---
 
 ## DSAN 5450: Human Tags
 
 ![](images/imagenet.jpg){fig-align="center"}
+
+---
+
+
+## Motivation: Efficient Data Storage and Manipulation {.title-10 .smaller .crunch-title .crunch-ul}
+
+* Transferable skills *regardless of* current popular language
+* C "overtaken" by Java, Java "overtaken" by Python, Python will someday be overtaken
+
+```{python}
+#| label: plot-langs
+#| code-fold: true
+#| fig-align: center
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.io as pio
+pio.renderers.default = "notebook"
+lang_df = pd.read_csv("assets/gh_issues.csv")
+# The data for 2022 is essentially useless
+lang_df = lang_df[lang_df['year'] <= 2021].copy()
+lang_df['time'] = lang_df['year'].astype(str) + "_" + lang_df['quarter'].astype(str)
+lang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')
+lang_df.head()
+#sns.lineplot(data=lang_df, x='year', y='count', color='name')
+# Keep only most popular languages
+keep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']
+pop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()
+fig = px.line(pop_df,
+  x='time', y='prop', color='name',
+  template='simple_white', title='Programming Language Popularity Since 2012 (GitHub)',
+  labels = {
+    'time': 'Year',
+    'prop': 'Proportion of GitHub Issues'
+  }
+)
+fig.update_layout(
+  xaxis = dict(
+    tickmode = 'array',
+    tickvals = [f"{year}_1" for year in range(2012,2022)],
+    ticktext = [f"{year}" for year in range(2012,2022)]
+  )
+)
+fig.show()
+```
+
+---

@@ -5,6 +5,19 @@ figcaption {
     text-align: center !important;
 }
 
+.fix-mapview .leaflet {
+  height: 400px !important;
+}
+.leaflet {
+  width: 100% !important;
+}
+.leaflet-350 .leaflet {
+  height: 350px !important;
+}
+.leaflet-375 .leaflet {
+  height: 375px !important;
+}
+
 .code-90 code {
     margin-left: 8px !important;
     font-size: 80% !important;

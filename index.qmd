@@ -9,10 +9,7 @@ format:
   revealjs:
     output-file: "index.html"
     include-in-header:
-      text: |
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>"
     favicon: "favicon.png"
     html-math-method: mathjax
     slide-number: true
@@ -51,42 +48,7 @@ format:
 * Transferable skills *regardless of* current popular language
 * C "overtaken" by Java, Java "overtaken" by Python, Python will someday be overtaken
 
-```{python}
-#| label: plot-langs
-#| code-fold: true
-#| fig-align: center
-import pandas as pd
-import numpy as np
-import plotly.express as px
-import plotly.io as pio
-pio.renderers.default = "notebook"
-lang_df = pd.read_csv("assets/gh_issues.csv")
-# The data for 2022 is essentially useless
-lang_df = lang_df[lang_df['year'] <= 2021].copy()
-lang_df['time'] = lang_df['year'].astype(str) + "_" + lang_df['quarter'].astype(str)
-lang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')
-lang_df.head()
-#sns.lineplot(data=lang_df, x='year', y='count', color='name')
-# Keep only most popular languages
-keep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']
-pop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()
-fig = px.line(pop_df,
-  x='time', y='prop', color='name',
-  template='simple_white', title='Programming Language Popularity Since 2012 (GitHub)',
-  labels = {
-    'time': 'Year',
-    'prop': 'Proportion of GitHub Issues'
-  }
-)
-fig.update_layout(
-  xaxis = dict(
-    tickmode = 'array',
-    tickvals = [f"{year}_1" for year in range(2012,2022)],
-    ticktext = [f"{year}" for year in range(2012,2022)]
-  )
-)
-fig.show()
-```
+![](images/langs.png){fig-align="center"}
 
 ## W4: Linear vs. Logarithmic Structures {.smaller .crunch-title .crunch-img .crunch-quarto-figure .crunch-table}
 
@@ -223,7 +185,7 @@ digraph G {
 
 * What are the processes by which data is **measured**, **recorded**, and **distributed**?
 
-![The <a href='https://github.com/MimiOnuoha/missing-datasets' target='_blank'>Library of Missing Datasets</a>. From @dignazio_data_2020](images/missing-datasets.jpg){fig-align="center"}
+![The <a href='https://github.com/MimiOnuoha/missing-datasets' target='_blank'>Library of Missing Datasets</a> [@dignazio_data_2020]](images/missing-datasets.jpg){#fig-missing fig-align="center"}
 
 ## Encoding Existing Biases {.smaller .crunch-title .crunch-img}
 
@@ -279,7 +241,7 @@ Figures from @ingold_amazon_2016, "Amazon Doesn't Consider the Race of its Custo
 
 ![From PIWIK, [*Privacy Policies Around the Globe*](https://piwik.pro/privacy-laws-around-globe/) (2023)](images/piwik.jpeg){#fig-policies fig-align="center"}
 
-## Does Reading = Understanding? {.smaller .crunch-title .crunch-ul}
+## Privacy Policies and Linguistic Ambiguity {.smaller .crunch-title .crunch-ul .title-11}
 
 * Does reading $\implies$ understanding **implications** / **contingencies** / **ambiguities**?
 * NLP can help: *"making privacy policies **machine readable** [...] would help users match **privacy preferences** against **policies** offered by web services"* [@wagner_privacy_2023]
@@ -291,17 +253,20 @@ Figures from @ingold_amazon_2016, "Amazon Doesn't Consider the Race of its Custo
 * Offered in **Fall**
 * **Classical** (i.i.d.) Statistics $\rightarrow$ **Spatial** Statistics (need to account for **autocorrelation**)
 
+## Diffusion Processes {.fix-mapview}
 
-## Diffusion Processes
+::: {#fig-neighbors}
 
 ```{r}
 #| label: plot-neighbors
+#| echo: true
+#| code-fold: true
 # Libraries
+library(tidyverse) |> suppressPackageStartupMessages()
 library(sf) |> suppressPackageStartupMessages()
 library(spdep) |> suppressPackageStartupMessages()
 library(rnaturalearth) |> suppressPackageStartupMessages()
 library(mapview) |> suppressPackageStartupMessages()
-library(htmlwidgets)
 # Download data
 asia_sf <- ne_countries(continent = "Asia", scale=50)
 # Compute neighborhood matrix
@@ -314,8 +279,11 @@ nb_lines <- spdep::nb2lines(
 )
 nb_lines$edgelabel <- paste0(nb_lines$i_ID, "-", nb_lines$j_ID)
 # And plot
-mapview(nb_cents, label="geounit") + mapview(nb_lines, label="edgelabel")
+mapview(nb_cents, label="geounit", legend=FALSE) + mapview(nb_lines, label="edgelabel", legend=FALSE)
 ```
+
+Country neighborhoods in Asia (Using contiguity criterion)
+:::
 
 ## Spatial Regression
 
