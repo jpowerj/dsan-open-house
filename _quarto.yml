@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "DSAN Open Houe 2024"
+  title: "DSAN Open House 2024"
   navbar:
     left:
       - href: index.qmd
