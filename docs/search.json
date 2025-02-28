@@ -7,18 +7,18 @@
     "text": "Motivation: Efficient Data Storage and Manipulation\n\nTransferable skills regardless of current popular language\nC “overtaken” by Java, Java “overtaken” by Python, Python will someday be overtaken\n\n\n\nFigure 1: Programming language popularity (GitHub Issues discussion frequency), 2011 - 2022"
   },
   {
-    "objectID": "index.html#w4-linear-vs.-logarithmic-structures",
-    "href": "index.html#w4-linear-vs.-logarithmic-structures",
+    "objectID": "index.html#linear-vs.-logarithmic-structures",
+    "href": "index.html#linear-vs.-logarithmic-structures",
     "title": "A Whirlwind Tour of ‘Applied’ Electives",
-    "section": "W4: Linear vs. Logarithmic Structures",
-    "text": "W4: Linear vs. Logarithmic Structures\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Look Up a Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]"
+    "section": "Linear vs. Logarithmic Structures",
+    "text": "Linear vs. Logarithmic Structures\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Find Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]"
   },
   {
-    "objectID": "index.html#w11-functional-programming-for-debuggable-etl-pipelines",
-    "href": "index.html#w11-functional-programming-for-debuggable-etl-pipelines",
+    "objectID": "index.html#functional-programming-for-debuggable-etl-pipelines",
+    "href": "index.html#functional-programming-for-debuggable-etl-pipelines",
     "title": "A Whirlwind Tour of ‘Applied’ Electives",
-    "section": "W11: Functional Programming for Debuggable ETL Pipelines",
-    "text": "W11: Functional Programming for Debuggable ETL Pipelines\n\n\nRun code, check output… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n\n\n\n\n\nWith side effects: ❌ \\(\\Rightarrow\\) issue somewhere in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\Rightarrow\\) issue must be in remove_punct()! 😎 ⏱️ = 💰"
+    "section": "Functional Programming for Debuggable ETL Pipelines",
+    "text": "Functional Programming for Debuggable ETL Pipelines\n\n\nRun code, check output… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n\n\n\n\n\nWith side effects: ❌ \\(\\Rightarrow\\) issue somewhere in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\Rightarrow\\) issue must be in remove_punct()! 😎 ⏱️ = 💰"
   },
   {
     "objectID": "index.html#data-science-for-whom",

@@ -50,23 +50,28 @@ format:
 
 ![Programming language popularity (GitHub Issues discussion frequency), 2011 - 2022](images/langs.png){#fig-lang-plot fig-align="center"}
 
-## W4: Linear vs. Logarithmic Structures {.smaller .crunch-title .crunch-img .crunch-quarto-figure .crunch-table .title-12}
+## Linear vs. Logarithmic Structures {.smaller .crunch-title .crunch-img .crunch-quarto-figure .crunch-table .title-11 .crunch-math}
 
 ```{=html}
-<table style="table-layout: fixed; width: 100% !important;">
+<table>
+<colgroup>
+  <col style="width: 28%">
+  <col style="width: 30%">
+  <col style="width: 42%">
+</colgroup>
 <thead>
 <tr>
-  <th style="width: 25% !important;"></th>
-  <th style="width: 30% !important;"><span data-qmd="Linear Things: $O(N)$"></span></th>
-  <th style="width: 45% !important;"><span data-qmd="Logarithmic Things: $O(\lg{N})$"></span></th>
+  <th></th>
+  <th><span data-qmd="Linear Things: $O(N)$"></span></th>
+  <th><span data-qmd="Logarithmic Things: $O(\lg{N})$"></span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td style="width: 25% !important;"><span data-qmd="**Data Structures**"></span></td>
+  <td><span data-qmd="**Data Structures**"></span></td>
   <td><div data-qmd="`LinkedList`
   
-![](images/linked_list.svg){width=270}"></div></td>
+![](images/linked_list.svg){width=260}"></div></td>
   <td><div data-qmd="`BinarySearchTree`
 
 ![](images/bst.svg){fig-align=center width=200}"></div></td>
@@ -87,7 +92,7 @@ format:
   <td>Divide-and-Conquer</td>
 </tr>
 <tr>
-  <td><span data-qmd="**Steps to Look Up a Word**"></span></td>
+  <td><span data-qmd="**Steps to Find Word**"></span></td>
   <td><span data-qmd="$N = 102118$"></span></td>
   <td><span data-qmd="$\lceil \log_2(N) \rceil = 17$"></span></td>
 </tr>
@@ -101,7 +106,7 @@ $$
 O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Efficient Algorithm} \\ \text{(Free!)}}}} \; \underbrace{\leadsto O(1 + \epsilon\log_2(N))}_{\substack{\text{More Memory} \\ \text{(\$\$\$)}}}
 $$
 
-## W11: Functional Programming for *Debuggable* ETL Pipelines {.crunch-title .title-06 .crunch-ul .crunch-p .code-90}
+## Functional Programming for *Debuggable* ETL Pipelines {.crunch-title .title-06 .crunch-ul .crunch-p .code-90}
 
 <!-- * Imperative ("standard") programming: Code runs line-by-line, from top to bottom -->
 * Run code, check output... it's wrong 😵 what do you do?
