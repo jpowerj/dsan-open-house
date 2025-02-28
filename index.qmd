@@ -3,13 +3,13 @@ title: "A Whirlwind Tour of 'Applied' Electives"
 subtitle: "Data Science and Analytics (DSAN) at Georgetown University"
 author: "Jeff Jacobs"
 institute: "Georgetown University<br /><a href='mailto:jj1088@georgetown.edu'>`jj1088@georgetown.edu`</a>"
-date: 2024-11-22
+date: 2025-03-28
 date-format: "dddd, D MMMM YYYY"
 format:
   revealjs:
     output-file: "index.html"
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>"
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
     favicon: "favicon.png"
     html-math-method: mathjax
     slide-number: true
@@ -17,8 +17,8 @@ format:
     cache: false
     link-external-icon: true
     link-external-newwindow: true
-    css: "styles.css"
-    footer: "DSAN Open House 2024"
+    theme: [default, "./jjquarto.scss"]
+    footer: "DSAN Open House 2025"
     logo: "images/dsan_twolines.png"
     bibliography: "DSAN_Open_House.bib"
     nocite: |
@@ -34,10 +34,10 @@ format:
 
 # Electives I Teach
 
-* DSAN 5500: Data Structures, Algorithms, and Objects in Python
 * DSAN 5450: Data Ethics and Policy
+* DSAN 5500: Data Structures, Algorithms, and Objects in Python
+* DSAN 5650: Causal Inference for Computational Social Science
 * DSAN 6750: GIS for Spatial Data Science
-* DSAN 6850: Causal Inference for Computational Social Science
 
 # DSAN 5500: Data Structures, Algorithms, and Objects in Python {data-stack-name="Data Structures"}
 
@@ -48,9 +48,9 @@ format:
 * Transferable skills *regardless of* current popular language
 * C "overtaken" by Java, Java "overtaken" by Python, Python will someday be overtaken
 
-![](images/langs.png){fig-align="center"}
+![Programming language popularity (GitHub Issues discussion frequency), 2011 - 2022](images/langs.png){#fig-lang-plot fig-align="center"}
 
-## W4: Linear vs. Logarithmic Structures {.smaller .crunch-title .crunch-img .crunch-quarto-figure .crunch-table}
+## W4: Linear vs. Logarithmic Structures {.smaller .crunch-title .crunch-img .crunch-quarto-figure .crunch-table .title-12}
 
 ```{=html}
 <table style="table-layout: fixed; width: 100% !important;">
@@ -248,6 +248,70 @@ Figures from @ingold_amazon_2016, "Amazon Doesn't Consider the Race of its Custo
 
 ![From @wagner_privacy_2023. "Obfuscatory words" are words like *acceptable*, *significant*, *mainly*, or *predominantly*, interpretated at the discretion of companies rather than users](images/wagner_fig.svg){#fig-wagner fig-align="center"}
 
+# DSAN 5650: Causal Inference for Computational Social Science {data-stack-name="Causal Inference"}
+
+* Offered in **Summer** (2025)
+* When *Does* Correlation Imply Causation?
+
+## Fundamental Problem of Causal Inference {.smaller .title-12}
+
+Our only workable definition of "$X$ causes $Y$" is...
+
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Defining Causality [@hume1739treatise]"}
+
+$X$ causes $Y$ if and only if:
+
+1. $X$ *temporally precedes* $Y$ and
+2. 
+    * In **two worlds** $W_0$ and $W_1$ where everything is **exactly the same** *except* $X = 0$ in $W_0$ and $X = 1$ in $W_1$,
+    * $Y = 0$ in $W_0$ and $Y = 1$ in $W_1$.
+
+:::
+
+* The problem? We live in **one** world, not two identical worlds simultaneously 😭
+* The solution? **Counterfactual** analysis: find pairs of cases **similar except for $Y$**
+  * Experimental Data: **Randomization** (treatment vs. control group) ensures this
+  * Observational Data: Treatment vs. control **not** randomized, so we have to **match** cases based on *statistical similarity criteria* ($\leftarrow$ first DSAN 5650 topic!)
+
+## Does Inequality Cause Poor Military Performance? {.smaller .crunch-title .title-10 .table-70}
+
+| <br>Covariates | Sultanate of Morocco<br> *Spanish-Moroccan War, 1859-60* | Khanate of Kokand<br> *War with Russia, 1864-65* |
+| - | - | - |
+| **$X$: Military Inequality** | Low (0.01) | Extreme (0.70) |
+| **$\mathbf{Z}$: Matched Covariates:** | | |
+| Initial relative power | 66% | 66% |
+| Total fielded force | 55,000 | 50,000 |
+| Regime type | Absolutist Monarchy (−6) | Absolute Monarchy (−7) |
+| Distance from capital | 208km | 265km |
+| Great Power | No | No |
+| Superior weapons | No | No |
+| Foreign advisors | Yes | Yes |
+| Terrain | Semiarid coastal plain | Semiarid grassland plain |
+| War duration | 126 days | 378 days |
+| Facing colonizer | Yes | Yes |
+| Identity dimension | Sunni Islam/Christian | Sunni Islam/Christian |
+| New leader | Yes | Yes |
+| Population | 8–8.5 million | 5–6 million |
+| **$Y$: Battlefield Performance:** | | |
+| Loss-exchange ratio | 0.43 | 0.02 |
+
+## $\Rightarrow$ Model Social / Historical Processes as "Chain" of Counterfactuals! {.smaller .title-12 .cols-va}
+
+&nbsp;
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![From @bind2019causal](images/heart_dag_crop.svg){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+![From @acharya2023slavery](images/sen_dag2.svg){fig-align="center"}
+
+:::
+::::
+
 # DSAN 6750: GIS for Spatial Data Science {data-stack-name="GIS"}
 
 * Offered in **Fall**
@@ -292,9 +356,9 @@ it_plot <- readRDS("assets/it_plot.rds")
 it_plot
 ```
 
-## We Hope You Join Us! 😊 {data-sm="false"}
+# We Hope You Join Us! 😊 {.title-11}
 
-**References**
+## References
 
 ::: {#refs}
 :::
