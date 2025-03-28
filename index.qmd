@@ -219,39 +219,9 @@ digraph G {
 @wan_kelly_2023, "Gender Biases in LLM-Generated Reference Letters"
 :::
 
-## Fairness $\neq$ Excluding Race/Gender {.smaller .crunch-title}
+## Data for "Reverse Engineering" of Bias {.title-09}
 
-* In fact (because of **correlations**) can *prevent* reduction of racial disparities
-* *Bloomberg* analysis of **neighborhoods with same-day delivery** from Amazon... 
-
-::: {#fig-amazon}
-
-:::: {.columns}
-::: {.column width="50%"}
-
-![](images/dc-big-inset.png){fig-align="center"}
-
-:::
-::: {.column width="50%"}
-
-![](images/dc-big-chart.png){fig-align="center"}
-
-:::
-::::
-
-Figures from @ingold_amazon_2016, "Amazon Doesn't Consider the Race of its Customers. Should It?"
-:::
-
-## Data Protection Regimes
-
-![From PIWIK, [*Privacy Policies Around the Globe*](https://piwik.pro/privacy-laws-around-globe/) (2023)](images/piwik.jpeg){#fig-policies fig-align="center"}
-
-## Privacy Policies and Linguistic Ambiguity {.smaller .crunch-title .crunch-ul .title-11}
-
-* Does reading $\implies$ understanding **implications** / **contingencies** / **ambiguities**?
-* NLP can help: *"making privacy policies **machine readable** [...] would help users match **privacy preferences** against **policies** offered by web services"* [@wagner_privacy_2023]
-
-![From @wagner_privacy_2023. "Obfuscatory words" are words like *acceptable*, *significant*, *mainly*, or *predominantly*, interpretated at the discretion of companies rather than users](images/wagner_fig.svg){#fig-wagner fig-align="center"}
+![Mexico's *PROGRESA* poverty alleviation program: implementation vs. preferences of eligible residents (*"Machine Learning What Policies Value"*, @bjorkegren2022machine)](images/counterfactual.jpg){fig-align="center"}
 
 # DSAN 5650: Causal Inference for Computational Social Science {data-stack-name="Causal Inference"}
 
@@ -299,23 +269,6 @@ $X$ causes $Y$ if and only if:
 | Population | 8–8.5 million | 5–6 million |
 | **$Y$: Battlefield Performance:** | | |
 | Loss-exchange ratio | 0.43 | 0.02 |
-
-## $\Rightarrow$ Model Social / Historical Processes as "Chain" of Counterfactuals! {.smaller .title-12 .cols-va}
-
-&nbsp;
-
-:::: {.columns}
-::: {.column width="50%"}
-
-![From @bind2019causal](images/heart_dag_crop.svg){fig-align="center"}
-
-:::
-::: {.column width="50%"}
-
-![From @acharya2023slavery](images/sen_dag2.svg){fig-align="center"}
-
-:::
-::::
 
 # DSAN 6750: GIS for Spatial Data Science {data-stack-name="GIS"}
 
@@ -367,3 +320,34 @@ it_plot
 
 ::: {#refs}
 :::
+
+# Appendix Slides
+
+
+## Data Protection Regimes
+
+![From PIWIK, [*Privacy Policies Around the Globe*](https://piwik.pro/privacy-laws-around-globe/) (2023)](images/piwik.jpeg){#fig-policies fig-align="center"}
+
+## Privacy Policies and Linguistic Ambiguity {.smaller .crunch-title .crunch-ul .title-11}
+
+* Does reading $\implies$ understanding **implications** / **contingencies** / **ambiguities**?
+* NLP can help: *"making privacy policies **machine readable** [...] would help users match **privacy preferences** against **policies** offered by web services"* [@wagner_privacy_2023]
+
+![From @wagner_privacy_2023. "Obfuscatory words" are words like *acceptable*, *significant*, *mainly*, or *predominantly*, interpretated at the discretion of companies rather than users](images/wagner_fig.svg){#fig-wagner fig-align="center"}
+
+## $\Rightarrow$ Model Social / Historical Processes as "Chain" of Counterfactuals! {.smaller .title-12 .cols-va}
+
+&nbsp;
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![From @bind2019causal](images/heart_dag_crop.svg){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+![From @acharya2023slavery](images/sen_dag2.svg){fig-align="center"}
+
+:::
+::::

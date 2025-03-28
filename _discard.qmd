@@ -88,3 +88,29 @@ fig.show()
 ```
 
 ---
+
+## Fairness $\neq$ Excluding Race/Gender {.smaller .crunch-title}
+
+* In fact (because of **correlations**) can *prevent* reduction of racial disparities
+* *Bloomberg* analysis of **neighborhoods with same-day delivery** from Amazon... 
+
+::: {#fig-amazon}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![](images/dc-big-inset.png){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+![](images/dc-big-chart.png){fig-align="center"}
+
+:::
+::::
+
+Figures from @ingold_amazon_2016, "Amazon Doesn't Consider the Race of its Customers. Should It?"
+:::
+
+---
+
